@@ -32,5 +32,19 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saahiil-lim/LsLibTest.git"
+  },
+  "author": "test",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saahiil-lim/LsLibTest/issues"
+  },
+  "homepage": "https://github.com/Saahiil-lim/LsLibTest#readme"
 }
