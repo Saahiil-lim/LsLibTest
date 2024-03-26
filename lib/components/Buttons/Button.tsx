@@ -13,7 +13,8 @@ interface ButtonBaseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   rightDecor?: ReactNode;
 }
 
-const Button: React.FC<ButtonBaseProps> = ({ leftDecor, rightDecor, ...props }) => {
+const Button = ({leftDecor, rightDecor ,...props}: ButtonBaseProps) => {
+
   return (
     <div>
       {rightDecor && rightDecor}
