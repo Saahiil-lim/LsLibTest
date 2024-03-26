@@ -1,19 +1,31 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import PropTypes from 'prop-types';
 
-interface ButtonBaseProps extends ButtonHTMLAttributes<HTMLButtonElement>{
-leftDecor?:ReactNode,
-rightDecor?:ReactNode
+/**
+ * Button component
+ * @param {object} props - Component props
+ * @param {ReactNode} props.leftDecor - Left decorator for the button
+ * @param {ReactNode} props.rightDecor - Right decorator for the button
+ * @returns {JSX.Element} Button component
+ */
+interface ButtonBaseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  leftDecor?: ReactNode;
+  rightDecor?: ReactNode;
 }
 
-const Button = ({leftDecor, rightDecor ,...props}: ButtonBaseProps) => {
-
+const Button: React.FC<ButtonBaseProps> = ({ leftDecor, rightDecor, ...props }) => {
   return (
     <div>
-        {rightDecor && rightDecor}
-        <button {...props}>ButtonText</button>
-        {leftDecor &&leftDecor}
+      {rightDecor && rightDecor}
+      <button {...props}>ButtonText</button>
+      {leftDecor && leftDecor}
     </div>
-  )
-}
-export {Button}
+  );
+};
+
+Button.propTypes = {
+  leftDecor: PropTypes.node,
+  rightDecor: PropTypes.node,
+};
+
+export { Button };
