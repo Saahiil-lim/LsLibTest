@@ -12,7 +12,7 @@ export default defineConfig({
   build: {
     copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, "lib/main.ts"),
+      entry: resolve(__dirname, "lib/main.js"),
       formats: ["es"],
     },
     rollupOptions: {
