@@ -4,6 +4,8 @@
 
 name: Publish Package
 
+# name: Node.js Package
+
 on:
   release:
     types: [created]
@@ -18,63 +20,20 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      
-  publish:
+
+  publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Package
-        run: npm run build
-
-      - name: Echo NPM Token
-        run: echo ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to GitHub Packages
-        run: npm publish --access public
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm install
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-# name: Node.js Package
-
-# on:
-#   release:
-#     types: [created]
-#   workflow_dispatch:
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#       - run: npm install
-
-#   publish-gpr:
-#     needs: build
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       packages: write
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           registry-url: https://npm.pkg.github.com/
-#       - run: npm install
-#       - run: npm publish
-#         env:
-#           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
