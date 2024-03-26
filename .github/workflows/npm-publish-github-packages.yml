@@ -32,7 +32,7 @@ jobs:
       - run: npm login --registry=https://npm.pkg.github.com/ --always-auth --username ${{ secrets.USERNAME }} --password ${{ secrets.PASSWORD }}
 
   publish-gpr:
-    needs: build
+    needs: login
     runs-on: ubuntu-latest
     permissions:
       contents: read
