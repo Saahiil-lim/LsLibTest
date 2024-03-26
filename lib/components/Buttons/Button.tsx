@@ -1,5 +1,4 @@
 import  { ButtonHTMLAttributes, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 /**
  * Button component
  * @param {object} props - Component props
